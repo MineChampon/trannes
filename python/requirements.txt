@@ -1,0 +1,8 @@
+Django
+uwsgi
+mysqlclient
+requests
+numpy
+opencv-python
+google-cloud-vision
+BeautifulSoup4
