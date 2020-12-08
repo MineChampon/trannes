@@ -8,20 +8,20 @@ import json
 def post_test(request):
     return render( request, 'api/post_test.html')
 
-def createAccount(request):
+def account_create(request):
+    result = 'false'
+
     if 'user_id' in request.POST:
-        result = 'true'
-        params = {
-            "createAccountResult": result,
-        }
-        json_str = json.dumps(params, ensure_ascii=False, indent=2) 
-        return HttpResponse(json_str)
+        pass
+
+
+
+    status = {
+        "AccountCreateStatus": result,
+    }
+    
+    response = json.dumps(status, ensure_ascii=False, indent=2) 
+    return HttpResponse(response)
 
 def login(request):
-    if 'user_id' in request.POST:
-        result = 'POST'
-        params = {
-            'user_id':result,
-        }
-        json_str = json.dumps(params, ensure_ascii=False, indent=2) 
-        return HttpResponse(json_str)
+    pass
