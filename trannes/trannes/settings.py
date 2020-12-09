@@ -82,6 +82,9 @@ DATABASES = {
         'PASSWORD': 'admin',
         'HOST': 'db',  # localhost
         'PORT': '3306',
+        'TEST': {  # testDB
+            'NAME': 'test_trannes',
+        },
     }
 }
 

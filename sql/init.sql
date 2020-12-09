@@ -1,6 +1,7 @@
 CREATE DATABASE IF NOT EXISTS trannes CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 CREATE USER IF NOT EXISTS 'minecha'@'%' IDENTIFIED BY 'admin';
 GRANT ALL PRIVILEGES ON trannes.* TO 'minecha'@'%';
+GRANT ALL PRIVILEGES ON test_trannes.* TO 'minecha'@'%';
 
 create table users(
 user_id varchar(32) primary key not null,
