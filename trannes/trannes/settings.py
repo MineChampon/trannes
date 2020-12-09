@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'trannes.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'trannes',  # データベース名
-        'USER': 'root',
+        'NAME': 'trannes',
+        'USER': 'minecha',  # root
         'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'HOST': 'db',  # localhost
         'PORT': '3306',
     }
 }
