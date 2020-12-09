@@ -12,10 +12,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: deploy
-    env:
-      EC2_USER: ${{ secrets.EC2_USER }}
-      EC2_HOST: ${{ secrets.EC2_HOST }}
-      SECRET_KEY: ${{ secrets.SECRET_KEY }}
+      env:
+        EC2_USER: ${{ secrets.EC2_USER }}
+        EC2_HOST: ${{ secrets.EC2_HOST }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
       run: |
         echo "$SECRET_KEY" > secretkey
         chmod 600 secretkey
