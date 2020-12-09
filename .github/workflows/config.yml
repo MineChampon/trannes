@@ -56,5 +56,5 @@ jobs:
       run: |
         echo "$SECRET_KEY" > secretkey
         chmod 600 secretkey
-        ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secretkey "cd ~/trannes && git fetch origin master && git reset --hard origin/master"
+        ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secretkey "cd ~/trannes && git pull origin master"
       
