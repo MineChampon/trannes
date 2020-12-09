@@ -25,7 +25,7 @@ SECRET_KEY = 'hx+=z&n6_-11w8vk3@-$lfqnxt+tz+6nh_w4+setfstvfrmcn1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['54.150.74.214']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,13 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'api'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -77,9 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'trannes',  # データベース名
-        'USER': 'minecha',
+        'USER': 'root',
         'PASSWORD': 'admin',
-        'HOST': 'db',
+        'HOST': 'localhost',
         'PORT': '3306',
     }
 }
