@@ -46,11 +46,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: deploy
+      run: |
+        echo "$SECRET_KEY" > secret_key  
+        chmod 600 secret_key
+        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/trannes && git pull origin master"
     env:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       EC2_USER: ${{ secrets.EC2_USER }}
       EC2_HOST: ${{ secrets.EC2_HOST }}
-      run: 
-        echo "$SECRET_KEY" > secret_key  
-        chmod 600 secret_key
-        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/trannes && git pull origin master"
+      
