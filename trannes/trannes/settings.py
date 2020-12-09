@@ -78,12 +78,15 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'trannes',
-        'USER': 'minecha',  # root
+        'USER': 'minecha',  # minecha/root
         'PASSWORD': 'admin',
-        'HOST': 'db',  # localhost
+        'HOST': 'db',  # db/localhost
         'PORT': '3306',
         'TEST': {  # testDB
             'NAME': 'test_trannes',
+        },
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
     }
 }
