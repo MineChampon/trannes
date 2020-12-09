@@ -31,9 +31,10 @@ jobs:
       run: |
         sleep 10
         docker ps -a
-    - name: Grant execute permission of manage.py
+    - name: Grant execute permission of manage.py and Change line feed code
       run: |
         chmod +x ./trannes/manage.py
+        vi +':wq ++ff=unix' ./trannes/manage.py
     - name: Django migrate
       run: |
         docker-compose run python ./manage.py migrate
