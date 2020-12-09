@@ -9,7 +9,7 @@ def post_test(request):
     return render( request, 'api/post_test.html')
 
 def account_create(request):
-    result = 'false'
+    result = 'true'
 
     if 'user_id' in request.POST:
         pass

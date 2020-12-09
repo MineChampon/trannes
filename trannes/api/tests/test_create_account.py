@@ -4,9 +4,10 @@ import json
 class TestAccountCreate(TestCase):
     def test_account_create(self):
         #レスポンスでstatus_code:200とAccountCreateStatus:trueが返ってくるかどうか
-        client = Client(){'user_id': 'test', 'password': 'admin'}
+        client = Client()
         test_account_create = {
-            "AccountCreateStatus": "true",
+            'user_id': 'test',
+            'password': 'admin',
         }
 
         test_response = {
