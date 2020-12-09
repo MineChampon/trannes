@@ -30,8 +30,10 @@ jobs:
     - name: sleep for launch db to migrate at Django
       run: |
         sleep 10
+        docker ps -a
     - name: migrate
       run: |
+        chmod +x manage.py
         docker-compose run python ./manage.py migrate
     - name: Django Tests
       run: |
