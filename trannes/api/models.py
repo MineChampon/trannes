@@ -4,6 +4,8 @@ from django.db import models
 class Users(models.Model):
     user_id = models.CharField(primary_key=True, max_length=32)
     password = models.CharField(max_length=255)
+    created_at = models.DateTimeField()
+    updated_at = models.DateTimeField()
 
     class Meta:
         managed = False
