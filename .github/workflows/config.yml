@@ -27,7 +27,7 @@ jobs:
         docker-compose up -d
     - name: sleep for launch db to migrate at Django
       run: |
-        sleep 20
+        sleep 5
         docker ps -a
     - name: Grant execute permission of manage.py and Change line feed code
       run: |

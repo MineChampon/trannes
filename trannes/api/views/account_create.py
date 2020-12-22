@@ -3,8 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import json
 
-from ..models import Users 
-
+from ..models import *
 
 def account_create(request):
     result = 'true'
