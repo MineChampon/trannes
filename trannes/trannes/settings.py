@@ -78,9 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'trannes',
-        'USER': 'minecha',  # minecha/root
+        'USER': 'root',  # minecha/root
         'PASSWORD': 'admin',
-        'HOST': 'db',  # db/localhost
+        'HOST': 'localhost',  # db/localhost
         'PORT': '3306',
         'TEST': {  # testDB
             'NAME': 'test_trannes',
