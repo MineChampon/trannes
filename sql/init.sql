@@ -5,7 +5,9 @@ GRANT ALL PRIVILEGES ON test_trannes.* TO 'minecha'@'%';
 
 create table users(
 user_id varchar(32) primary key not null,
-password varchar(255) not null)
+password varchar(255) not null,
+created_at timestamp not null default current_timestamp,
+updated_at timestamp not null default current_timestamp on update current_timestamp)
 charset=utf8mb4;
 
 create table user_details(
