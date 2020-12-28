@@ -20,7 +20,7 @@ def password_match_check(json_datas):
 def login(request):
 
     status = {
-        "LoginStatus": "false",
+        "status": "false",
         "message": "ログインに失敗しました"
     }
 
@@ -29,9 +29,9 @@ def login(request):
             post_data = json.loads(request.body) # POSTされたjsonデータ
             print(json.dumps(post_data, ensure_ascii=False, indent=2))
 
-            status["LoginStatus"] = "true"
+            status["status"] = "true"
             status["message"] = "ログインに成功しました"
-            status["LoginDetails"] = post_data
+            status["PostData"] = post_data
 
         else:
             status["message"] = "パスワードが一致しません"

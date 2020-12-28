@@ -19,7 +19,7 @@ def duplicate_and_element_check(json_datas):
 def account_create(request):
 
     status = {
-        "AccountCreateStatus": "false",
+        "status": "false",
         "message": "アカウントの作成に失敗しました"
     }
 
@@ -46,10 +46,10 @@ def account_create(request):
             userdetails.save()
 
             #登録完後の処理
-            status["AccountCreateStatus"] = "true"
+            status["status"] = "true"
             status["message"] = "アカウントが作成されました"
-            status["UserDetails"] = post_data
-
+            status["PostData"] = post_data
+            
         else:
             status["message"] = "そのIDは使用されています"
             if request.method == 'POST':

@@ -17,11 +17,11 @@ def password_match_check(json_datas):
     else:
         return False
 
-def account_delete(request):
+def account_detail(request):
 
     status = {
         "status": "false",
-        "message": "アカウントの削除に失敗しました"
+        "message": "アカウント情報の取得に失敗しました"
     }
 
     try:
@@ -29,11 +29,12 @@ def account_delete(request):
             post_data = json.loads(request.body) # POSTされたjsonデータ
             print(json.dumps(post_data, ensure_ascii=False, indent=2))
 
-            Users.objects.get(user_id = post_data["user_id"]).delete()
-            UserDetails.objects.get(user_id = post_data["user_id"]).delete()
+            userdetails = UserDetails.objects.values('user_name', 'user_id', 'mail_address', 'gender', 'birthday').get(user_id = post_data["user_id"])
+            userdetails['birthday'] = str(userdetails['birthday'])
 
             status["status"] = "true"
-            status["message"] = "アカウントが削除されました"
+            status["message"] = "アカウント情報を取得しました"
+            status["detail"] = userdetails
             status["PostData"] = post_data
 
         else:
