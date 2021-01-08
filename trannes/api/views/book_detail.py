@@ -33,8 +33,6 @@ import re
 from urllib.parse import urlparse
 import urllib
 
-from PIL import Image
-
 
 from ..models import *
 
