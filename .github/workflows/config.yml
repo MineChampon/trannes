@@ -33,6 +33,7 @@ jobs:
       run: |
         chmod +x ./trannes/manage.py
         vi +':wq ++ff=unix' ./trannes/manage.py
+        sudo yum install -y mesa-libGL.x86_64
     - name: Django migrate
       run: |
         docker-compose run python ./manage.py migrate
