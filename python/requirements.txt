@@ -4,5 +4,6 @@ mysqlclient
 requests
 numpy
 opencv-python
+opencv-contrib-python
 google-cloud-vision
 BeautifulSoup4
