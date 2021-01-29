@@ -25,6 +25,7 @@ isbn_id varchar(13) primary key,
 book_title varchar(255) not null,
 book_author varchar(255) not null,
 book_detail varchar(1000) not null,
+book_image varchar(255) not null,
 created_at timestamp not null default current_timestamp,
 updated_at timestamp not null default current_timestamp on update current_timestamp)
 charset=utf8mb4;

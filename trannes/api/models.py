@@ -29,6 +29,7 @@ class Books(models.Model):
     book_title = models.CharField(max_length=255)
     book_author = models.CharField(max_length=255)
     book_detail = models.CharField(max_length=1000)
+    book_image = models.CharField(max_length=255)
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
 

@@ -82,6 +82,7 @@ def book_search(request):
                 return bn
 
             def download_file(url, isbn):
+                urltext = ""
                 try:
                     dst_path = './api/image/' + isbn +'.jpg'
                     if not os.path.exists(dst_path):
@@ -90,16 +91,22 @@ def book_search(request):
                         img_url = soup.find_all('meta')
                         image = re.findall(r"https://www.kinokuniya.co.jp/images/goods/ar2/web/imgdata2/large/[0-9]{5}/[0-9]{10}.jpg", str(img_url))
                         if image:
-                            pass
+                            urltext = str(image[0])
+                            print(urltext)
                         else:
                             image = ["https://www.kinokuniya.co.jp/images/parts/goods-list/no-phooto.jpg"]
+                            urltext = str(image[0])
+                            print(urltext)
                         with urllib.request.urlopen(image[0]) as web_file:
                             data = web_file.read()
                             with open(dst_path, mode='wb') as local_file:
                                 local_file.write(data)
+                        
 
                 except urllib.error.URLError as e:
                     print(e)
+
+                return urltext
 
             post_data = json.loads(request.body)
             isbn_id = post_data["isbn_id"]
@@ -113,13 +120,30 @@ def book_search(request):
             book_detail = instructions(book)
             download_file(book, isbn_id)
 
+            book_image = ""
+
+            url = requests.get(book)
+            soup = BeautifulSoup(url.content, "html.parser")
+            img_url = soup.find_all('meta')
+            image = re.findall(r"https://www.kinokuniya.co.jp/images/goods/ar2/web/imgdata2/large/[0-9]{5}/[0-9]{10}.jpg", str(img_url))
+            if image:
+                book_image = str(image[0])
+                print(book_image)
+            else:
+                image = ["https://www.kinokuniya.co.jp/images/parts/goods-list/no-phooto.jpg"]
+                book_image = str(image[0])
+                print(book_image)
+
+            
+
             if not Books.objects.filter(isbn_id=isbn_id).exists():
                             #画像保存
                 books = Books(
                             isbn_id = isbn_id,
                             book_title = book_title,
                             book_author = book_author,
-                            book_detail = book_detail
+                            book_detail = book_detail,
+                            book_image = book_image
                         )
                 books.save()
 
@@ -141,6 +165,7 @@ def book_search(request):
             status["BookTitle"] = book.book_title
             status["BookAuthor"] = book.book_author
             status["BookDetail"] = book.book_detail
+            status["BookImage"] = book.book_image
             status["BookGenres"] = genres
             status["isbn"] = isbn_id
 

@@ -132,7 +132,7 @@ def book_recognition(request):
                         img_url = soup.find_all('meta')
                         image = re.findall(r"https://www.kinokuniya.co.jp/images/goods/ar2/web/imgdata2/large/[0-9]{5}/[0-9]{10}.jpg", str(img_url))
                         if image:
-                            pass
+                             pass
                         else:
                             image = ["https://www.kinokuniya.co.jp/images/parts/goods-list/no-phooto.jpg"]
                         with urllib.request.urlopen(image[0]) as web_file:
@@ -178,6 +178,20 @@ def book_recognition(request):
                             book_author = authorname_text(book)[0]
                         book_detail = instructions(book)
                         
+                        book_image = ""
+
+                        url = requests.get(book)
+                        soup = BeautifulSoup(url.content, "html.parser")
+                        img_url = soup.find_all('meta')
+                        image = re.findall(r"https://www.kinokuniya.co.jp/images/goods/ar2/web/imgdata2/large/[0-9]{5}/[0-9]{10}.jpg", str(img_url))
+                        if image:
+                            book_image = str(image[0])
+                            print(book_image)
+                        else:
+                            image = ["https://www.kinokuniya.co.jp/images/parts/goods-list/no-phooto.jpg"]
+                            book_image = str(image[0])
+                            print(book_image)
+
                         #返す配列
                         res_title.append(book_title)
                         res_isbn.append(isbn_id)
@@ -189,7 +203,8 @@ def book_recognition(request):
                                         isbn_id = isbn_id,
                                         book_title = book_title,
                                         book_author = book_author,
-                                        book_detail = book_detail
+                                        book_detail = book_detail,
+                                        book_image = book_image
                                     )
                             books.save()
 

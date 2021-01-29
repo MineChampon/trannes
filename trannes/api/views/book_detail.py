@@ -61,6 +61,7 @@ def book_detail(request):
             status["BookTitle"] = book.book_title
             status["BookAuthor"] = book.book_author
             status["BookDetail"] = book.book_detail
+            status["BookImage"] = book.book_image
             status["BookGenres"] = genres
             status["isbn"] = post_data["isbn_id"]
 
