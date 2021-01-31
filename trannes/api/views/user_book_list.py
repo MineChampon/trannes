@@ -54,14 +54,14 @@ def user_book_list(request):
             for book_title in userbooks:
                 print(book_title["isbn_id"])
                 isbn.append(book_title["isbn_id"])
-                book = Books.objects.values('book_title').filter(isbn_id=book_title["isbn_id"])
-                title.append(book[0]["book_title"])
+                #book = Books.objects.values('book_title').filter(isbn_id=book_title["isbn_id"])
+                #title.append(book[0]["book_title"])
             
 
             status["status"] = "true"
             status["message"] = "追加された本を取得しました"
             status["isbn"] = isbn
-            status["IsbnBookTitle"] = dict(zip(isbn, title))
+            #status["IsbnBookTitle"] = dict(zip(isbn, title))
 
 
     except:
