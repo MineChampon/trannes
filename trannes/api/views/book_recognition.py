@@ -49,8 +49,8 @@ def book_recognition(request):
         if request.method == 'POST':
             with open("ocr.txt", 'rb') as f:
                 ocr = f.read()
-
-            #ocr = request.POST['ocr']
+            post_data = json.loads(request.body, strict=False)
+            ocr = post_data['base64']
 
             img_binary = base64.b64decode(ocr)
             jpg=np.frombuffer(img_binary,dtype=np.uint8)

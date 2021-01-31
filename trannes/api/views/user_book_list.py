@@ -60,6 +60,7 @@ def user_book_list(request):
 
             status["status"] = "true"
             status["message"] = "追加された本を取得しました"
+            status["isbn"] = isbn
             status["IsbnBookTitle"] = dict(zip(isbn, title))
 
 
