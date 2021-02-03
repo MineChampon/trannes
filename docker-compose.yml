@@ -29,7 +29,7 @@ services:
 
   python:
       build: ./python
-      command: uwsgi --socket :8001 --module trannes.wsgi --py-autoreload 1 --logto /tmp/mylog.log
+      command: uwsgi --socket :8001 --module trannes.wsgi --py-autoreload 1 --logto /tmp/mylog.log --buffer-size=65535
       volumes:
         - ./trannes:/code
         - ./static:/static
