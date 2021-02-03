@@ -47,8 +47,6 @@ def book_recognition(request):
 
     try:
         if request.method == 'POST':
-            with open("ocr.txt", 'rb') as f:
-                ocr = f.read()
             post_data = json.loads(request.body, strict=False)
             ocr = post_data['base64']
 
