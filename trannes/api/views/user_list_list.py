@@ -37,14 +37,40 @@ def user_list_list(request):
 
     status = {
         "status": "false",
-        "message": "本の取得に失敗しました"
+        "message": "リスト情報の取得に失敗しました"
     }
     
 
     try:
         if request.method == 'POST':
-            pass
+            post_data = json.loads(request.body) # POSTされたjsonデータ
+            print(json.dumps(post_data, ensure_ascii=False, indent=2))
+            userlists = UserLists.objects.values('list_id', 'list_name').filter(user_id = post_data["user_id"])
 
+            print(userlists)
+
+            listId = []
+            listName = []
+            isbn_id = []
+
+            for userlist in userlists:
+                print(userlist)
+                listId.append(userlist["list_id"])
+                listName.append(userlist["list_name"])
+
+                userslistbooks = UsersListBooks.objects.values('isbn_id').filter(list_id = userlist["list_id"])
+                addisbn = []
+                for userslistbook in userslistbooks:
+                    addisbn.append(userslistbook["isbn_id"])
+                isbn_id.append(addisbn)
+
+            
+
+            status["status"] = "true"
+            status["message"] = "リスト情報を取得しました"
+            status["list_id"] = listId
+            status["list_name"] = listName
+            status["isbn_id"] = isbn_id
 
     except:
         import traceback

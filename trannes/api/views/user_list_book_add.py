@@ -37,13 +37,25 @@ def user_list_book_add(request):
 
     status = {
         "status": "false",
-        "message": "本の取得に失敗しました"
+        "message": "リストへの本の追加に失敗しました"
     }
     
 
     try:
         if request.method == 'POST':
-            pass
+            post_data = json.loads(request.body)
+            isbn_id = post_data["isbn_id"]
+            list_id = post_data["list_id"]
+            userslistbooks = UsersListBooks(
+                            isbn_id = isbn_id,
+                            list_id = list_id
+                        )
+            userslistbooks.save()
+
+            status["status"] = "true"
+            status["message"] = "リストへの本の追加が完了しました"
+            status["list_id"] = list_id
+            status["isbn_id"] = isbn_id
 
 
     except:

@@ -37,13 +37,23 @@ def user_list_book_delete(request):
 
     status = {
         "status": "false",
-        "message": "本の取得に失敗しました"
+        "message": "リストの本の削除に失敗しました"
     }
     
 
     try:
         if request.method == 'POST':
-            pass
+            post_data = json.loads(request.body)
+            isbn_id = post_data["isbn_id"]
+            list_id = post_data["list_id"]
+
+            userslistbooks = UsersListBooks.objects.filter(list_id=list_id,isbn_id=isbn_id)
+            userslistbooks.delete()
+
+            status["status"] = "true"
+            status["message"] = "リストの本の削除が完了しました"
+            status["list_id"] = list_id
+            status["isbn_id"] = isbn_id
 
 
     except:

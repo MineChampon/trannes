@@ -37,13 +37,22 @@ def user_list_delete(request):
 
     status = {
         "status": "false",
-        "message": "本の取得に失敗しました"
+        "message": "リストの削除に失敗しました"
     }
     
 
     try:
         if request.method == 'POST':
-            pass
+            post_data = json.loads(request.body)
+            user_id = post_data["user_id"]
+            list_name = post_data["list_name"]
+
+            userlists = UserLists.objects.filter(user_id=user_id,list_name=list_name)
+            userlists.delete()
+
+            status["status"] = "true"
+            status["message"] = "リストの削除が完了しました"
+            status["list_name"] = list_name
 
 
     except:
