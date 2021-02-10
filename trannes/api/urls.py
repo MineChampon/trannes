@@ -16,4 +16,12 @@ urlpatterns = [
     path('user/book/list/', views.user_book_list, name='user_book_list'),
     path('user/book/search/', views.user_book_search, name='user_book_search'),
     path('user/book/recommend/', views.user_book_recommend, name='user_book_recommend'),
+
+    path('user/list/create/', views.user_list_create, name='user_list_create'),
+    path('user/list/delete/', views.user_list_delete, name='user_list_delete'),
+    path('user/list/book/add/', views.user_list_book_add, name='user_list_book_add'),
+    path('user/list/book/delete/', views.user_list_book_delete, name='user_list_book_delete'),
+    path('user/list/list/', views.user_list_list, name='user_list_list'),
+
+
 ]
